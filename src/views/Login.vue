@@ -2,9 +2,9 @@
   <div class="layout">
     <main>
       <h1>Mandou Bem</h1>
-      <form>
-        <FloatInput label="E-mail" type="email" />
-        <FloatInput label="Password" type="password" />
+      <form @submit="handleSubmit">
+        <FloatInput label="E-mail" type="email" v-model="email" />
+        <FloatInput label="Password" type="password" v-model="password" />
         <button>
           <i class="fas fa-arrow-right"></i>
         </button>
@@ -15,11 +15,26 @@
 
 <script>
 import FloatInput from "@/components/FloatInput";
+import { mapActions } from "vuex";
 
 export default {
   name: "Login",
   components: {
     FloatInput
+  },
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    handleSubmit(event) {
+      event.preventDefault();
+      const { email, password } = this;
+      this.login({ email, password });
+    },
+    ...mapActions(["login"])
   }
 };
 </script>
