@@ -1,13 +1,18 @@
 <template>
   <div>
-    <input v-bind="$attrs" @input="$emit('input', $event.target.value)" :id="label" placeholder />
+    <input
+      v-bind="$attrs"
+      @input="$emit('input', $event.target.value)"
+      :id="label"
+      placeholder
+    />
     <label :for="label">{{ label }}</label>
   </div>
 </template>
 
 <script>
 export default {
-  name: "FloatInput",
+  name: 'FloatInput',
   inheritAttrs: false,
   props: {
     label: String

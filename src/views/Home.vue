@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <div class="view">
+      <Card editable />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Card from "@/components/Card";
+import { mapActions } from "vuex";
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld
+  components: { Card },
+  methods: mapActions(["getReceivers"]),
+  created() {
+    this.getReceivers();
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.view {
+  height: 100vh;
+  padding: 25% 0;
+}
+</style>

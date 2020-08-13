@@ -7,7 +7,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   function(config) {
-    config.headers.Authentication = localStorage.getItem("token");
+    config.headers.Authorization = localStorage.getItem("token");
     return config;
   },
   function(error) {
@@ -28,5 +28,7 @@ api.interceptors.response.use(
 );
 
 export const login = (data) => api.post("/login", data);
+
+export const getReceivers = () => api.get("/receivers");
 
 export default api;

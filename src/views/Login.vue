@@ -14,18 +14,18 @@
 </template>
 
 <script>
-import FloatInput from "@/components/FloatInput";
-import { mapActions } from "vuex";
+import FloatInput from '@/components/FloatInput';
+import { mapActions } from 'vuex';
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
     FloatInput
   },
   data() {
     return {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
   },
   methods: {
@@ -34,7 +34,7 @@ export default {
       const { email, password } = this;
       this.login({ email, password });
     },
-    ...mapActions(["login"])
+    ...mapActions(['login'])
   }
 };
 </script>
@@ -65,10 +65,11 @@ h1 {
 
 button {
   align-self: flex-end;
-  padding: 0.5em 2em;
+  padding: 0.4em 2em;
+  cursor: pointer;
   font-size: 1.2em;
   background: #000;
-  border-radius: 0.5em;
+  border-radius: 0.4em;
   border: none;
   color: #fff;
   margin: 0 0.5em;
