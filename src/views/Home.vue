@@ -1,26 +1,33 @@
 <template>
   <div class="scroll-wrapper">
-    <div class="send">
+    <div class="send" ref="top">
       <header>
         <h1>Mandou Bem</h1>
       </header>
       <div class="card-wrapper">
-        <Card :editable="true" />
+        <Card :editable="true" v-observe-visibility="changeAction" />
       </div>
     </div>
     <ListSection />
+    <MainButton :top="$refs.top" />
   </div>
 </template>
 
 <script>
 import Card from '@/components/Card';
+import MainButton from '@/components/MainButton';
 import ListSection from './ListSection';
 import { mapActions } from 'vuex';
 
 export default {
   name: 'Home',
-  components: { Card, ListSection },
-  methods: mapActions(['getReceivers', 'getReceived', 'getSent']),
+  components: { Card, ListSection, MainButton },
+  methods: mapActions([
+    'getReceivers',
+    'getReceived',
+    'getSent',
+    'changeAction'
+  ]),
   created() {
     this.getReceivers();
     this.getReceived();

@@ -11,7 +11,8 @@ export default new Vuex.Store({
     authenticated: localStorage.getItem('token'),
     receivers: [],
     received: [],
-    sent: []
+    sent: [],
+    action: 'send'
   },
   mutations: {
     authenticate(state) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     },
     setSent(state, sent) {
       state.sent = sent;
+    },
+    setAction(state, action) {
+      state.action = action;
     }
   },
   actions: {
@@ -44,6 +48,9 @@ export default new Vuex.Store({
       getSent().then(sent => {
         commit('setSent', sent);
       });
+    },
+    changeAction({ commit }, isIntersecting) {
+      commit('setAction', isIntersecting ? 'send' : 'scroll');
     }
   },
   getters: {}

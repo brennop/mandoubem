@@ -14,6 +14,7 @@
 <script>
 import List from '@/components/List';
 import { mapState } from 'vuex';
+
 export default {
   name: 'ListSection',
   components: { List },

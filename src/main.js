@@ -2,13 +2,16 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import 'intersection-observer';
 
+import VueObserveVisibility from 'vue-observe-visibility';
 import vSelect from 'vue-select';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'typeface-inter';
 
 Vue.component('v-select', vSelect);
+Vue.use(VueObserveVisibility);
 
 Vue.config.productionTip = false;
 
