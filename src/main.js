@@ -7,7 +7,6 @@ import vSelect from 'vue-select';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'typeface-inter';
-import 'vue-select/dist/vue-select.css';
 
 Vue.component('v-select', vSelect);
 

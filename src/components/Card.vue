@@ -1,14 +1,21 @@
 <template>
   <div class="card">
-    <Select v-model="sender" />
-    <img :src="photo_url" />
+    <Select v-model="sender" v-if="editable" />
+    <span class="receiver" v-else>{{ receiver.full_name }}</span>
+    <img :src="didgood_photo_path" />
     <div class="text-wrapper">
-      <textarea :defaultValue="description" />
+      <textarea
+        :defaultValue="description"
+        placeholder="Solta o verbo"
+        maxlength="120"
+        v-model="description"
+      />
       <hr />
       <hr />
       <hr />
       <hr />
     </div>
+    <span v-if="editable" class="counter">{{ charCount }}/120</span>
   </div>
 </template>
 
@@ -27,8 +34,11 @@ export default {
         key: String,
         label: String
       },
+      receiver: {
+        full_name: String
+      },
       description: String,
-      photo_url: String
+      didgood_photo_path: String
     },
     editable: Boolean
   },
@@ -40,9 +50,14 @@ export default {
             name: ''
           },
           description: '',
-          photo_url: 'https://source.unsplash.com/random'
+          didgood_photo_path: 'https://source.unsplash.com/random'
         }
       : this.data;
+  },
+  computed: {
+    charCount() {
+      return this.description.length;
+    }
   }
 };
 </script>
@@ -50,8 +65,7 @@ export default {
 <style scoped lang="scss">
 .card {
   width: 320px;
-  height: 400px;
-  padding: 1.5em;
+  padding: 1em 1.5em;
   border-radius: 0.5em;
   border: 1px solid #ddd;
   display: flex;
@@ -88,10 +102,19 @@ export default {
   }
 }
 
+.receiver {
+  border-bottom: 2px solid #000;
+  height: 2em;
+}
+
+.counter {
+  align-self: flex-end;
+}
+
 img {
   object-fit: cover;
   object-position: center;
   flex: 1 0 auto;
-  height: 0;
+  height: 10em;
 }
 </style>

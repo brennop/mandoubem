@@ -2,14 +2,16 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'typeface-inter';
-import { login, getReceivers } from '../services/api';
+import { login, getReceivers, getReceived, getSent } from '../services/api';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     authenticated: localStorage.getItem('token'),
-    receivers: []
+    receivers: [],
+    received: [],
+    sent: []
   },
   mutations: {
     authenticate(state) {
@@ -17,6 +19,12 @@ export default new Vuex.Store({
     },
     setReceivers(state, receivers) {
       state.receivers = receivers;
+    },
+    setReceived(state, received) {
+      state.received = received;
+    },
+    setSent(state, sent) {
+      state.sent = sent;
     }
   },
   actions: {
@@ -28,6 +36,14 @@ export default new Vuex.Store({
     },
     getReceivers({ commit }) {
       getReceivers().then(receivers => commit('setReceivers', receivers));
+    },
+    getReceived({ commit }) {
+      getReceived().then(receivers => commit('setReceived', receivers));
+    },
+    getSent({ commit }) {
+      getSent().then(sent => {
+        commit('setSent', sent);
+      });
     }
   },
   getters: {}
