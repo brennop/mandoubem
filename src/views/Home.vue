@@ -41,6 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 .scroll-wrapper {
+  height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   overflow-y: scroll;
   scroll-snap-type: y mandatory;

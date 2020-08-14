@@ -25,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: flex;
-  padding: 2em;
+  padding: 1em 2em;
   align-items: center;
 
   span {

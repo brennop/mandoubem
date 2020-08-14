@@ -93,10 +93,12 @@ export default {
     background: none;
     line-height: 2em;
     width: 100%;
+    overflow: hidden;
 
-    :disabled {
-      color: #000;
-    }
+    color: #000;
+    -webkit-text-fill-color: #000;
+    -webkit-opacity: 1;
+    opacity: 1;
   }
 
   hr {

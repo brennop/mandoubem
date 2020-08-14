@@ -24,13 +24,15 @@ export default {
 <style lang="scss" scoped>
 .container {
   width: 100vw;
-  height: calc(var(--vh, 1vh) * 100);
+  max-height: 100vh;
+  max-height: calc(var(--vh, 1vh) * 100);
 }
 
 .scroll-wrapper {
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+  overscroll-behavior: none;
 }
 
 nav {

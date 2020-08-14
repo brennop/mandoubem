@@ -16,7 +16,6 @@ export default {
 <style lang="scss">
 * {
   box-sizing: border-box;
-  overscroll-behavior: none;
   ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 0;
@@ -26,6 +25,12 @@ export default {
 
 body {
   margin: 0;
+}
+
+html,
+body {
+  position: fixed;
+  overflow: hidden;
 }
 
 #app {
