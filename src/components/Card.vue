@@ -9,6 +9,7 @@
         placeholder="Solta o verbo"
         maxlength="120"
         v-model="description"
+        :disabled="!editable"
       />
       <hr />
       <hr />
@@ -92,6 +93,10 @@ export default {
     background: none;
     line-height: 2em;
     width: 100%;
+
+    :disabled {
+      color: #000;
+    }
   }
 
   hr {
@@ -115,6 +120,6 @@ img {
   object-fit: cover;
   object-position: center;
   flex: 1 0 auto;
-  height: 10em;
+  height: 8em;
 }
 </style>

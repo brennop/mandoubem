@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="card-wrapper" v-for="item in items" :key="item.id">
+      <Sender :data="item.sender" />
       <Card :data="item" />
     </div>
   </div>
@@ -8,10 +9,11 @@
 
 <script>
 import Card from './Card';
+import Sender from './Sender';
 
 export default {
   name: 'List',
-  components: { Card },
+  components: { Card, Sender },
   props: {
     items: Array
   }
@@ -27,6 +29,7 @@ export default {
 }
 
 .card-wrapper {
+  padding: 1em 0;
   width: 100vw;
 }
 </style>

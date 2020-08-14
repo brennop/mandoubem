@@ -1,10 +1,10 @@
 <template>
   <div class="scroll-wrapper">
-    <div>
+    <div class="send">
       <header>
         <h1>Mandou Bem</h1>
       </header>
-      <div class="view">
+      <div class="card-wrapper">
         <Card :editable="true" />
       </div>
     </div>
@@ -25,13 +25,23 @@ export default {
     this.getReceivers();
     this.getReceived();
     this.getSent();
+
+    // fix 100vh in height
+    // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    window.addEventListener('resize', setVh);
+    setVh();
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .scroll-wrapper {
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 
@@ -40,8 +50,16 @@ export default {
   }
 }
 
-.view {
-  padding: 20% 0;
+.send {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-wrapper {
+  display: flex;
+  place-items: center;
+  height: 100%;
 }
 
 header {

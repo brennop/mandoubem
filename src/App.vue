@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Login from "./views/Login";
+import Login from './views/Login';
 
 export default {
   components: { Login }
@@ -16,6 +16,12 @@ export default {
 <style lang="scss">
 * {
   box-sizing: border-box;
+  overscroll-behavior: none;
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+  }
 }
 
 body {
