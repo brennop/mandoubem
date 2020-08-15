@@ -18,7 +18,8 @@ export default new Vuex.Store({
     receivers: [],
     received: [],
     sent: [],
-    action: 'send'
+    action: 'send',
+    section: 'received'
   },
   mutations: {
     authenticate(state) {
@@ -38,6 +39,9 @@ export default new Vuex.Store({
     },
     addSent(state, sent) {
       state.sent.unshift(sent);
+    },
+    setSection(state, section) {
+      state.section = section;
     }
   },
   actions: {

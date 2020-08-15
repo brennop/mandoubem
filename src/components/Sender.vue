@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="sender-container">
     <img :src="url + data.avatar_url" />
     <span class="name">{{ data.full_name }}</span>
   </div>
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.sender-container {
   display: flex;
   padding: 1em 2em;
   align-items: center;
