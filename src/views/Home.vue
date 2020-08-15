@@ -9,25 +9,23 @@
       </div>
     </div>
     <ListSection />
-    <MainButton @scroll="handleScroll" />
   </div>
 </template>
 
 <script>
 import Card from '@/components/Card';
-import MainButton from '@/components/MainButton';
 import ListSection from './ListSection';
 import { mapActions } from 'vuex';
 
 export default {
   name: 'Home',
-  components: { Card, ListSection, MainButton },
-  methods: {
-    ...mapActions(['getReceivers', 'getReceived', 'getSent', 'changeAction']),
-    handleScroll() {
-      this.$refs.top.scrollIntoView({ behavior: 'smooth' });
-    }
-  },
+  components: { Card, ListSection },
+  methods: mapActions([
+    'getReceivers',
+    'getReceived',
+    'getSent',
+    'changeAction'
+  ]),
   created() {
     this.getReceivers();
     this.getReceived();
@@ -76,6 +74,7 @@ header {
 
   h1 {
     margin: 0;
+    font-family: Poppins, sans-serif;
   }
 }
 </style>

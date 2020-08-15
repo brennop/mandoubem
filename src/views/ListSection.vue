@@ -39,6 +39,7 @@ export default {
 nav {
   padding: 1em;
   border-bottom: 1px solid #ddd;
+  font-family: Poppins, sans-serif;
 
   h1 {
     margin: 0 0.5em;

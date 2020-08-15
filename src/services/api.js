@@ -38,4 +38,7 @@ export const getReceived = () => api.get('/did_goods_received');
 
 export const getSent = () => api.get('/did_goods_sent');
 
+// export const send = (data) => api.post('/did_goods', data);
+export const send = data => Promise.resolve(data);
+
 export default api;

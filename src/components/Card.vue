@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <Select v-model="sender" v-if="editable" />
+    <Select v-model="receiver" v-if="editable" />
     <span class="receiver" v-else>{{ receiver.full_name }}</span>
     <img :src="didgood_photo_path" />
     <div class="text-wrapper">
@@ -11,22 +11,23 @@
         v-model="description"
         :disabled="!editable"
       />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
+      <hr v-for="_ in Array(4)" :key="_" />
     </div>
     <span v-if="editable" class="counter">{{ charCount }}/120</span>
+    <MainButton v-if="editable" @scroll="handleScroll" @send="handleSend" />
   </div>
 </template>
 
 <script>
 import Select from './Select';
+import MainButton from './MainButton';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Card',
   components: {
-    Select
+    Select,
+    MainButton
   },
   props: {
     data: {
@@ -46,7 +47,7 @@ export default {
   data() {
     return this.editable
       ? {
-          sender: {
+          receiver: {
             key: '',
             name: ''
           },
@@ -58,6 +59,19 @@ export default {
   computed: {
     charCount() {
       return this.description.length;
+    }
+  },
+  methods: {
+    ...mapActions(['send']),
+    handleScroll() {
+      this.$el.scrollIntoView({ behavior: 'smooth' });
+    },
+    handleSend() {
+      this.send({
+        receiver_id: this.receiver.key,
+        description: this.description,
+        photo: this.didgood_photo_path
+      });
     }
   }
 };

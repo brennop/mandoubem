@@ -2,7 +2,13 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'typeface-inter';
-import { login, getReceivers, getReceived, getSent } from '../services/api';
+import {
+  login,
+  getReceivers,
+  getReceived,
+  getSent,
+  send
+} from '../services/api';
 
 Vue.use(Vuex);
 
@@ -29,6 +35,9 @@ export default new Vuex.Store({
     },
     setAction(state, action) {
       state.action = action;
+    },
+    addSent(state, sent) {
+      state.sent.unshift(sent);
     }
   },
   actions: {
@@ -51,6 +60,9 @@ export default new Vuex.Store({
     },
     changeAction({ commit }, isIntersecting) {
       commit('setAction', isIntersecting ? 'send' : 'scroll');
+    },
+    send({ commit }, data) {
+      send(data).then(sent => commit('addSent', sent));
     }
   },
   getters: {}

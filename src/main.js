@@ -9,6 +9,7 @@ import vSelect from 'vue-select';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'typeface-inter';
+import 'typeface-poppins';
 
 Vue.component('v-select', vSelect);
 Vue.use(VueObserveVisibility);
