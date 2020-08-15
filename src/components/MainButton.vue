@@ -10,17 +10,14 @@ import { mapState } from 'vuex';
 export default {
   name: 'MainButton',
   computed: mapState(['action']),
-  props: {
-    top: Element
-  },
   methods: {
     handleClick() {
       switch (this.action) {
         case 'send':
-          console.log(this.top);
+          console.log('send');
           break;
         case 'scroll':
-          this.top.scrollIntoView({ behavior: 'smooth' });
+          this.$emit('scroll');
           break;
       }
     }

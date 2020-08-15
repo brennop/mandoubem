@@ -9,7 +9,7 @@
       </div>
     </div>
     <ListSection />
-    <MainButton :top="$refs.top" />
+    <MainButton @scroll="handleScroll" />
   </div>
 </template>
 
@@ -22,12 +22,12 @@ import { mapActions } from 'vuex';
 export default {
   name: 'Home',
   components: { Card, ListSection, MainButton },
-  methods: mapActions([
-    'getReceivers',
-    'getReceived',
-    'getSent',
-    'changeAction'
-  ]),
+  methods: {
+    ...mapActions(['getReceivers', 'getReceived', 'getSent', 'changeAction']),
+    handleScroll() {
+      this.$refs.top.scrollIntoView({ behavior: 'smooth' });
+    }
+  },
   created() {
     this.getReceivers();
     this.getReceived();
