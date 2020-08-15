@@ -42,6 +42,7 @@ export default {
 <style scoped lang="scss">
 .layout {
   height: 100vh;
+  width: 100vw;
   display: grid;
   place-items: center;
 }
@@ -58,9 +59,10 @@ form {
 }
 
 h1 {
-  margin: 1em 0.5em;
-  font-size: 2.5em;
-  font-weight: 900;
+  margin: 0.25em;
+  font-size: 3em;
+  font-weight: 800;
+  font-family: Poppins, sans-serif;
 }
 
 button {

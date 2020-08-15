@@ -37,6 +37,7 @@ input {
   border: none;
   border-bottom: 2px solid #000;
   padding: 0.8em 0.4em;
+  font-size: 16px;
   outline: none;
 }
 
