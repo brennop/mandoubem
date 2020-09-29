@@ -30,16 +30,6 @@ export default {
     this.getReceivers();
     this.getReceived();
     this.getSent();
-
-    // fix 100vh in height
-    // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
-    const setVh = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
-
-    window.addEventListener('resize', setVh);
-    setVh();
   }
 };
 </script>
@@ -47,7 +37,7 @@ export default {
 <style lang="scss" scoped>
 .scroll-wrapper {
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  height: -webkit-fill-available;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 

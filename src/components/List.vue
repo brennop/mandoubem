@@ -42,6 +42,7 @@ export default {
 .list {
   scroll-snap-align: start;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 100%;
   min-width: 100vw;
   display: grid;

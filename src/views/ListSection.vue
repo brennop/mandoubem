@@ -38,12 +38,13 @@ export default {
 .list-section {
   width: 100vw;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
 }
 
 .scroll-wrapper {
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   overscroll-behavior: none;
   height: 100%;
